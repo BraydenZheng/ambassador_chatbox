@@ -9,11 +9,11 @@ from datetime import datetime
 class Db:
   # db connection info
   mydb = mysql.connector.connect(
-    host="34.106.148.135",
+    host="34.125.165.69",
     user="bofan",
-    password="CuOAD5448@",
+    password="Cudc5448@",
     auth_plugin="mysql_native_password",
-  database='chatbot'
+    database='chatbot'
   )
 
 
