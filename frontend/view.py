@@ -1,6 +1,3 @@
-'''
-view part of the MVC pattern
-'''
 from calendar import c
 from tkinter import *
 import sys
