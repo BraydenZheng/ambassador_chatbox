@@ -20,11 +20,10 @@ def singleton(cls):
         pass
     return cls
 
-#decorator pattern
 @singleton
 class chatbot(object):
     def __init__(self):
-        self.chatbot = ChatBot("OOAD")
+        self.chatbot = ChatBot("cb")
     
     def getBot(self):
         return self.chatbot

@@ -6,6 +6,7 @@ __pycache__/
 .idea/
 ENV_DIR/
 venv2
+chatenv
 venv3
 # C extensions
 *.so

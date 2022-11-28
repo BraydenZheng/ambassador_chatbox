@@ -10,10 +10,10 @@ def login(username, password):
     return passW[0] == str(password)
 
 # register api
-def register(usern, passw, name =""):
+def register(usern, passw):
     # allow register only if user not exist
     if not conn.findUserIdByUsername(usern):
-        conn.addUserInfo(usern, passw, name)
+        conn.addUserInfo(usern, passw, usern)
         return {"msg": "Success"}
     else:
         return {"msg": "User Exist"}

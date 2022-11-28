@@ -9,11 +9,11 @@ from datetime import datetime
 class Db:
   # db connection info
   mydb = mysql.connector.connect(
-    host="34.106.148.135",
+    host="34.135.215.224",
     user="bofan",
-    password="CuOAD5448@",
+    password="bofan",
     auth_plugin="mysql_native_password",
-  database='chatbot'
+    database='chatbot'
   )
 
 
@@ -59,7 +59,10 @@ class Db:
     mycursor = self.mydb.cursor()
     mycursor.execute(q)
     myresult = mycursor.fetchone()
-    return myresult[0]
+    if myresult is not None:
+      return myresult[0];
+    else:
+      return ""
 
 
 # add chat record for certain user

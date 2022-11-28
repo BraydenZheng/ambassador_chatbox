@@ -1,6 +1,3 @@
-'''
-controller part of the MVC pattern when the business logic is handled
-'''
 from chatbot import get_response
 from auth import register, login
 from recordObserver import RecordObserver
