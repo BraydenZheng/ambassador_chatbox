@@ -1,14 +1,8 @@
-'''
-Interaction of chatbot with the chatterbot library
-
-Singleton and Decorator patterns are used
-'''
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 from chatterbot.trainers import ChatterBotCorpusTrainer
 
-#singleton pattern
-#https://peps.python.org/pep-0318/#examples
+#@Source https://peps.python.org/pep-0318/#examples
 def singleton(cls):
     obj = cls()
     # Always return the same object
