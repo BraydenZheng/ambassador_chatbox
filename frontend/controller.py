@@ -1,18 +1,28 @@
+import json
+
 from chatbot import get_response
 from auth import register, login
-from recordObserver import RecordObserver
-from subject import Subject
+from recordService import RecordService
 
 import sys
+import pika
+
 sys.path.append('../backend')
+
+connection = pika.BlockingConnection(
+    pika.ConnectionParameters(host='34.125.165.69'))
+channel = connection.channel()
+channel.queue_declare(queue='chatbot')
+
+
 class Controller:
+
     def __init__(self, view, model):
         self.view = view
         self.model = model
-        self.subject = Subject()
-        self.ob = RecordObserver()
-        self.subject.addObserver(self.ob)
-    
+        self.ob = RecordService()
+
+
     #function to display the view
     def start_chatbot(self):
         self.view.run()
@@ -43,7 +53,10 @@ class Controller:
 
     #function which calls backend api to save user chat hisotry
     def save_chat(self, userid):
-        self.subject.notifyObserver(userid, self.model.chat_history)
+        encode_mess = self.model.chat_history
+        encode_mess.insert(0, userid)
+        channel.basic_publish(exchange='', routing_key='chatbot', body=json.dumps(encode_mess))
+
         return True
     
     #function which calls backend api to get saved user chat history

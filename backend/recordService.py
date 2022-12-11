@@ -2,12 +2,13 @@ from db import Db
 conn = Db()
 import json
 
-# Observer pattern - Observer
-# observer used to update chat record in select db
 
-class RecordObserver:
+# service used to update chat record in select db
+
+class RecordService:
     def selectChatRecordByUser(self, username):
         s = conn.selectChatRecordByUser(username)
+
         return json.loads(s)
 
 

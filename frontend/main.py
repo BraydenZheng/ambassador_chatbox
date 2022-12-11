@@ -2,7 +2,6 @@
 main function from where execution of frontend starts
 creating model, view and control classes
 
-MVC pattern is used for frontend
 '''
 
 import sys
