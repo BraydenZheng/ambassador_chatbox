@@ -19,7 +19,7 @@ channel.queue_declare(queue='chatbot')
 class Controller:
 
     def __init__(self, view, model):
-        self.host = 'localhost'
+        self.host = '34.125.165.69'
         self.addr = f"http://{self.host}:5001"
         self.view = view
         self.model = model

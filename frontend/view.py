@@ -9,7 +9,7 @@ from constants import BG_GRAY, BG_COLOR, TEXT_COLOR, FONT, FONT_BOLD, BOT_NAME
 
 class View:
     def __init__(self):
-        self.host = 'localhost'
+        self.host = '34.125.165.69'
         self.addr = f"http://{self.host}:5001"
         self.init_window()
         self.init_variables()
