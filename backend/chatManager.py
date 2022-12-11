@@ -10,8 +10,6 @@ def main():
 
     channel.queue_declare(queue='chatbot')
 
-    # def callback(ch, method, properties, body):
-    #     print(" [x] Received %r" % body.decode())
 
     def callback(ch, method, properties, body):
         b = json.loads(body)

@@ -1,19 +1,23 @@
+import json
 from calendar import c
 from tkinter import *
 import sys
 
 sys.path.append( '../backend')
+import requests
 from constants import BG_GRAY, BG_COLOR, TEXT_COLOR, FONT, FONT_BOLD, BOT_NAME
 
 class View:
     def __init__(self):
+        self.host = 'localhost'
+        self.addr = f"http://{self.host}:5001"
         self.init_window()
         self.init_variables()
     
     #initializes the tkinter main window    
     def init_window(self):
         self.window = Tk()
-        self.window.title("CU Boulder Computer Science Chat Bot")
+        self.window.title("CU Boulder Computer Science Welcome Ambassador")
         self.window.resizable(width=False, height=False)
         self.window.configure(width=470, height=550, bg=BG_COLOR)
         self.window.eval('tk::PlaceWindow . center') #to place the window in center of the screen
@@ -292,8 +296,8 @@ class View:
         if not self.password_login.get():
             self.error_popup("Please enter password")
             return
-        
-        if self.controller.user_login(self.userid_login.get(), self.password_login.get()):
+
+        if self.request_login(self.userid_login.get(), self.password_login.get()):
             self.login_frame.destroy()
             self.chat_frame = self.create_chat_frame()
             self.show_main_window()
@@ -301,6 +305,15 @@ class View:
             self.display_chat_history(self.controller.get_user_chat_history())
         else:
             self.error_popup("Oops! Please try again later")
+
+        # if self.controller.user_login(self.userid_login.get(), self.password_login.get()):
+        #     self.login_frame.destroy()
+        #     self.chat_frame = self.create_chat_frame()
+        #     self.show_main_window()
+        #     self.controller.get_chat_history(self.userid_login.get())
+        #     self.display_chat_history(self.controller.get_user_chat_history())
+        # else:
+        #     self.error_popup("Oops! Please try again later")
             
     def clear_variables(self):
         self.userid.set('')
@@ -331,3 +344,10 @@ class View:
     def handle_chat_save_button_pressed(self, event):
         if self.controller.save_chat(self.userid_login.get()):
             self.window.destroy()
+
+    def request_login(self, userid, passwd):
+        auth_url = self.addr + '/login'
+        payload = {'username': userid, 'password': passwd}
+        response = requests.get(auth_url, params=payload)
+        res = json.loads(response.text)
+        return res

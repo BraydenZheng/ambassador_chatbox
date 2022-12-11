@@ -6,6 +6,7 @@ from recordService import RecordService
 
 import sys
 import pika
+import requests
 
 sys.path.append('../backend')
 
@@ -18,6 +19,8 @@ channel.queue_declare(queue='chatbot')
 class Controller:
 
     def __init__(self, view, model):
+        self.host = 'localhost'
+        self.addr = f"http://{self.host}:5001"
         self.view = view
         self.model = model
         self.ob = RecordService()
@@ -41,7 +44,8 @@ class Controller:
     
     #function which calls backend api to register new user
     def add_new_user(self, user, pwd):
-        res = register(user, pwd)
+        res = self.user_register(user, pwd)
+        # res = register(user, pwd)
         if res['msg'] == "Success":
             return True
         else:
@@ -63,4 +67,11 @@ class Controller:
     def get_chat_history(self, userid):
         chat = self.ob.selectChatRecordByUser(userid)
         self.model.set_initial_chat(chat)
-    
+
+    def user_register(self, user, pwd):
+        auth_url = self.addr + '/register'
+        payload = {'username': user, 'password': pwd}
+        response = requests.get(auth_url, params=payload)
+        res = json.loads(response.text)
+        return res
+
