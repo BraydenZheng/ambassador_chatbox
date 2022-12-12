@@ -1,3 +1,6 @@
+# Source: https://github.com/patrickloeber/python-fun
+# Frontend part is modified from source above
+
 import json
 from calendar import c
 from tkinter import *

@@ -1,8 +1,5 @@
 # Chatbot implementation in Tkinter
-<h2>Team members : Bofan Zheng
-
-## Video Link
-https://youtu.be/z6fRfGDN_PE
+<h2>Team members : Bofan Zheng, Sarthak Maniar
 
 ## Language: 
 Python 3.9.12 \
@@ -32,4 +29,3 @@ view.py contains all the code for the UI. model.py conatins all the data and con
 
 ## Reference
 1. GUI: https://www.youtube.com/watch?v=RNEcewpVZUQ&t=74s&ab_channel=PythonEngineer 
-2. Singleton with decorator: https://peps.python.org/pep-0318/#examples, https://stackoverflow.com/questions/31875/is-there-a-simple-elegant-way-to-define-singletons
