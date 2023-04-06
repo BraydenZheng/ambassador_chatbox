@@ -1,8 +1,8 @@
 # Chatbot implementation in Tkinter
-<h2>Team members : Bofan Zheng
+<h2>Team members : Bofan Zheng, Sarthak Maniar
 
 ## Video Link
-https://youtu.be/z6fRfGDN_PE
+https://www.youtube.com/watch?v=LKruwy_WiZA
 
 ## Language: 
 Python 3.9.12 \
